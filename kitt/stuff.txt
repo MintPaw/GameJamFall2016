@@ -93,7 +93,7 @@ Level 16-25: +20 Stamina, Ferocity-
 
 Ferocity-, Sensitivity- She doesn't seem to mind the scrubs nor the dubs.
 Ferocity-, Sensitivity+ She loves it. She asks you for a rubber ducky too next time.
-Ferocity+, Sensitivity- She snaps at the bubbles.
+Ferocity+, Sensitivity- She bites at the bubbles.
 Ferocity+, Sensitivity+ She pretends like she's too ferocious for a bubblebath, but you can tell she's having a great time.
 
 
@@ -102,7 +102,7 @@ A lurid green energy drink
 Refills stamina, max stamina +5
 
 Rhythm+, Ferocity+ She goes wild and rips up the curtains and breakdances in the living room.
-Rhythm-, Ferocity- She starts rambling about demon culture and her parents.
+Rhythm-, Ferocity- She starts rambling about demon culture and her parents. She's making most of it up.
 Rhythm+, Ferocity- You look away for a second and when you look back she's doing a lithe belly-dance sort of thing.
 Rhythm-, Ferocity+ She snaps at some birds outside the house and chases them eight blocks away.
 
@@ -111,10 +111,16 @@ Rhythm-, Ferocity+ She snaps at some birds outside the house and chases them eig
 
 Rhythm-, Spirit+ This guy is great, she says, barely able to follow the steps.
 Rhythm+, Spirit+ She works out big time. By the end of the DVD she's sprawled out on the couch panting.
-Rhythm-, Spirit- 
+Rhythm-, Spirit- She doesn't have much fun with it.
+Rhythm+, Spirit- She follows the steps with absolute perfection. This is boring, she says.
 
 (Equ) Cute Hat - Moon Chunk x1
 +5% EXP gain
+
+Ferocity+, Trust- 
+Ferocity-, Trust+
+Ferocity-, Trust-
+Ferocity+. Trust+
 
 (Equ) Cute Necklace - Moon Gem x8
 A little string of gems that makes a demon feel more mature.

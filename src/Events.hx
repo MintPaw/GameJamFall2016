@@ -7,6 +7,7 @@ class Events
 		log('Job "${job.name}" ticked on pet "${pet.name}"');
 
 		pet.stamina -= 10;
+		pet.exp += 4;
 
 		if (job.name == "Moonrock Muncher") {
 			//Stats
@@ -48,8 +49,6 @@ class Events
 			pet.spirit -= 2;
 		} else if (job.name == "Sleep") {
 			pet.stamina += 20;
-		} else {
-			log('Job "${job.name}" ticked on pet "${pet.name}", but it was not intercepted');
 		}
 
 		if (pet.stamina <= 10) {
@@ -61,6 +60,7 @@ class Events
 
 	public static function idlePetTicked(p:Pet):Void {
 		p.stamina -= 1;
+		p.exp += 1;
 		if (p.stamina <= 0) {
 			p.job = "Sleep";
 			log('${p.name} waited up for you, but couldn\'t quite make it.');

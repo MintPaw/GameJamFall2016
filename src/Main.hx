@@ -51,6 +51,12 @@ class Game
 				jobTicked(jobByName(p.job), p);
 			else
 				idlePetTicked(p);
+
+			if (p.exp > Math.pow(2, p.level)) {
+				p.exp = 0;
+				p.level++;
+				log('"${p.name}" gained a level');
+			}
 		}
 	}
 
@@ -142,6 +148,8 @@ class Game
 
 		clear();
 		println("Name: "+pet.name);
+		println("Experience: "+pet.exp);
+		println("Level: "+pet.level);
 		println("Stamina: "+pet.stamina+"/"+pet.maxStamina);
 		println("Trust: "+pet.trust);
 		println("Sensitivity: "+pet.sensitivity);
@@ -255,6 +263,8 @@ class Game
 			name: "noname pet",
 			job: "None",
 			items: [],
+			exp: 0,
+			level: 1,
 			maxStamina: 100,
 			stamina: 100,
 			trust: 0,
@@ -279,6 +289,8 @@ typedef GameData = {
 
 typedef Pet = {
 	name:String,
+	exp:Int,
+	level:Int,
 	job:String,
 	items:Array<Item>,
 
