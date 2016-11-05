@@ -104,7 +104,7 @@ Gain +20 EXP per hour while resting and -1 sensitivity
 Gain +40 EXP per hour while resting and +2 sensitivity and +2 spirit
 
 (Equ) The Devil's Own Crusty Mattress - Moon Chunk x100, Moon Gem x40, Washable Inverted Cross Tattoo x3
-Consumes 3 spirit and gives +66 EXP, +3 ferocity while resting
+Consumes 3 spirit and gives +66 EXP, +3 ferocity per hour while resting
 
 (Equ) Studded Glowchoker - Moon Gem x80, Glowstick x30
 Stamina depletes 30% slower
@@ -112,7 +112,7 @@ Stamina depletes 30% slower
 (Equ) Steamy Shower - x200 Moon Chunks, x10 Soap, x30 Air Duster
 +75 EXP and +2 sensitivity at the start of each shift, +10% EXP gain
 
-(Equ) Alcoholic Smoothie Machine - Moon Chunk x350, x100 Moon Gem, x50 Wine, x10 Demon Treatz
+(Equ) Necronomargaritaville - Moon Chunk x350, x100 Moon Gem, x50 Wine, x10 Demon Treatz
 +250 EXP at the end of each shift
 
 (Equ) Heisenberg Hat - Meth x100
@@ -123,6 +123,9 @@ Meth no longer lowers max stamina or trust
 
 (Equ) Flowing Dazzlegown - Moon Gem x250
 Whenever you gain stamina, gain +20 extra
+
+(Equ) Multiplicatizer Choker - Moon Chunk x750, Studded Glowchoker x3
+x1.5 EXP gain bonuses
 
 
 
