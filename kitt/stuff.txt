@@ -4,17 +4,16 @@ You clean her wound and wrap it in moon-bandages. She struggles and tries to get
 
 You curl up into the fetal position with her and vow to obliterate time itself to stop people from being such dicks.
 
+
+
 Stats:
 Trust - 0 - naturally goes up, raises exp gain rate
-Ferocity - 10
-Sensitivity - 50
+Ferocity - 0
+Sensitivity - 0
 Piety - 0
-Rhythm - 15
-HP - 10/100
+Rhythm - 0
+Stamina - 50/100
 
-
-
-HP - 10/100
 Level 1/25
 
 Jobs:
@@ -23,16 +22,19 @@ Jobs:
 Moonrock Muncher (ferocity+, sensitivity-) moon chunk++, moon gem+
 
 12:00 PM -- 6:00 PM
-Maid (ferocity-, sensitivity+) soap bubble++, air duster+
+Maid (ferocity-, sensitivity+) soap++, air duster+
 
 6:00AM -- 12:00 PM
-Priestess (piety+, sensitivity+) blessing++, max HP bonus+
+Priestess (piety+, sensitivity++, ferocity--) blessing++, max stamina+
 
 11:00PM -- 5:00 AM
-Assassin (piety-, sensitivity-, ferocity++) bounty++ [random resources], moon gem+
+Assassin (piety-, sensitivity--, ferocity++) bounty++ [random resources], moon gem+
 
 6:00 PM -- 12:00 AM
 Underground Rave Queen (rhythm+++) glowstick++, air duster-
+
+5:00 PM -- 11:00 PM
+Card Counter (rhythm-, ferocity--, sensitivity+++) bounty++++, moon chunk-, moon gem-, max stamina-
 
 Event Jobs:
 
@@ -40,10 +42,32 @@ Event Jobs:
 Eater of the Rich (piety--, ferocity++) moon gem+++
 
 9:00PM -- 3:00 AM
-Miner (rhythm+, sensitivity-) moon chunk+++, glowstick-, blessing-
+Miner (rhythm+, sensitivity-) moon chunk+++, glowstick-
 
 1:00AM -- 7:00 AM
 Accountant (rhythm---) moon chunk+++ moon gem+++
+
+Items:
+
+(Con) Demon Treatz - Moon Chunk x10
+Cute little red pellets for a growing demon.
+Level 1-10: +30 stamina
+Level 10-25: +10 stamina
+
+Trust+, Ferocity+, Stamina+ You pop a couple pellets past your demon's lips.
+Trust-, Ferocity+, Stamina- She nearly bites your hand off to scarf down the pellets. / She tears a hole in the bag and devours every last of your Treatz. (lose all treats)
+Trust-, Ferocity-, Stamina+ You hold some pellets out to her in a palm. She warily noses your hand until they drop, then picks at them.
+Trust-, Ferocity-, Stamina- You toss her some Demon Treatz. She stares at you, backs away. Slowly she sniffs them... tastes one... devours them.
+Trust-, Ferocity+, Stamina+ She snaps at your hand and gives a guttural growl... too proud to eat them, you guess?
+Stamina max (She doesn't touch them. Too full.)
+
+(Con) Atlas Shrugged Paperback - Moon Chunk x15, Moon Gem x2
+Inspires a nihilistic 
+
+
+
+Bubblebath 
+
 
 
 

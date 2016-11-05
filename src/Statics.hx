@@ -2,6 +2,11 @@ package ;
 
 class Statics
 {
+  public static var lastTime:Float = 0;
+
+  public static function init():Void {
+    getTime();
+  }
 
   public static function print(str:String):Void {
     Sys.print(str);
@@ -23,6 +28,21 @@ class Statics
   public static function pause(echo:Bool=true):Void {
     println("Press any key to continue...");
     getChar(false);
+  }
+
+  public static function exit():Void {
+    println("Goodbye.");
+    Sys.exit(0);
+  }
+
+  public static function getTime():Float {
+    return Timer.stamp();
+  }
+
+  public static function pollElapsed():Float {
+    var passed:Float = getTime() - lastTime;
+    lastTime = getTime();
+    return passed;
   }
 
   public static function menu(
