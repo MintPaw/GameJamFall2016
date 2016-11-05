@@ -2,15 +2,13 @@ While out on a moonwalk you hear distressed animal whining from the shadow of a 
 
 You clean her wound and wrap it in moon-bandages. She struggles and tries to get away from you.
 
-You curl up into the fetal position with her and vow to obliterate time itself to stop people from being such dicks.
-
-
+You curl up into the fetal position with her and vow raise her to eat the moon to stop people from being such dicks.
 
 Stats:
 Trust - 0 - naturally goes up, raises exp gain rate
 Ferocity - 0
 Sensitivity - 0
-Piety - 0
+Spirituality - 0
 Rhythm - 0
 Stamina - 50/100
 
@@ -22,36 +20,36 @@ Jobs:
 Moonrock Muncher (ferocity+, sensitivity-) moon chunk++, moon gem+
 
 12:00 PM -- 6:00 PM
-Maid (ferocity-, sensitivity+) soap++, air duster+
+Maid (ferocity-, sensitivity+) soap++, moon chunk+, air duster+
 
 6:00AM -- 12:00 PM
-Priestess (piety+, sensitivity++, ferocity--) blessing++, max stamina+
+Priestess (spirituality++, sensitivity++, ferocity--) wine++, moon gem+, max stamina+
 
-11:00PM -- 5:00 AM
-Assassin (piety-, sensitivity--, ferocity++) bounty++ [random resources], moon gem+
+12:00AM -- 6:00 AM
+Burgler (spirituality-, sensitivity--, ferocity++) bounty++ [random resources], moon chunk+, moon gem+
 
 6:00 PM -- 12:00 AM
-Underground Rave Queen (rhythm+++) glowstick++, air duster-
+Underground Rave Goddess (rhythm+++, spirituality+++) glowstick++, meth-, red wine-
 
 5:00 PM -- 11:00 PM
-Card Counter (rhythm-, ferocity--, sensitivity+++) bounty++++, moon chunk-, moon gem-, max stamina-
+Game Designer (rhythm-, ferocity---) bounty+++, moon chunk-, moon gem-, red wine- max stamina-
 
 Event Jobs:
 
 3:00AM -- 9:00 AM
-Eater of the Rich (piety--, ferocity++) moon gem+++
+Eater of the Rich (spirituality--, ferocity++) moon gem+++
 
-9:00PM -- 3:00 AM
+7:00AM -- 1:00 PM
 Miner (rhythm+, sensitivity-) moon chunk+++, glowstick-
 
 1:00AM -- 7:00 AM
-Accountant (rhythm---) moon chunk+++ moon gem+++
+Banker (rhythm--, spirituality--) moon chunk++++ moon gem+++
 
 Items:
 
 (Con) Demon Treatz - Moon Chunk x10
 Cute little red pellets for a growing demon.
-Level 1-10: +30 stamina
+Level 1-10: +20 stamina
 Level 10-25: +10 stamina
 
 Trust+, Ferocity+, Stamina+ You pop a couple pellets past your demon's lips.
@@ -59,14 +57,41 @@ Trust-, Ferocity+, Stamina- She nearly bites your hand off to scarf down the pel
 Trust-, Ferocity-, Stamina+ You hold some pellets out to her in a palm. She warily noses your hand until they drop, then picks at them.
 Trust-, Ferocity-, Stamina- You toss her some Demon Treatz. She stares at you, backs away. Slowly she sniffs them... tastes one... devours them.
 Trust-, Ferocity+, Stamina+ She snaps at your hand and gives a guttural growl... too proud to eat them, you guess?
+Trust+, Ferocity+, Stamina- You hold out some Demon Treatz to her. She scarfs them from your palm, careful not to scratch you with her razor-teeth.
+Trust+, Ferocity-, Stamina+ She's not very hungry, but she licks a couple out from the Demon Treatz bag anyway.
+Trust+, Ferocity-, Stamina- She gives a cute little keening and happily slurps the Treatz from your palm. Once her belly is full she sprawls out lazily and demon-purrs.
 Stamina max (She doesn't touch them. Too full.)
 
 (Con) Atlas Shrugged Paperback - Moon Chunk x15, Moon Gem x2
-Inspires a nihilistic 
+Inspires a nihilistic worldview in adolescent demons.
+Level 5-15:
+-5 Piety, +5 Ferocity
 
+(Con) Meth - Moon Chunk x20, Moon Gem x15, Air Duster x10
+A demon on meth is the best  
+Stamina +60, Max Stamina -10, Trust -5
 
+(Con) Bubblebath - Moon Gem x10, Soap x10
+Best used to rejuvenate a demon through scrub-a-dub-dubbery. Works best on younguns.
+Level 1-15: +40 Stamina, Ferocity-, Trust +5
+Level 16-25: +20 Stamina, Ferocity-
 
-Bubblebath 
+(Con) Glowforce Supersonic Energy Beverage - Moon Chunk x100, Moon Gem x50, Glowstick x10
+A lurid green energy drink
+Refills stamina, max stamina +5
+
+(Con) Richard Simmons Workout DVD: The Route to Cute Glutes - Moon Gem x150
+-40 stamina, max stamina +10, +2 levels
+
+(Equ) Cute Hat - Moon Chunk x1
++1% EXP gain
+
+(Equ) Cute Necklace - Moon Gem x8
+A little string of gems that makes a demon feel more mature.
++5% EXP gain
+
+(Equ) Washable Inverted Cross Tattoo - 
+
 
 
 

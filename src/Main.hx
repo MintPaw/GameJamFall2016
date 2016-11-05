@@ -9,7 +9,7 @@ class Main
 
 class Game
 {
-  public var data:GameData;
+  public static var data:GameData;
 
   public function new() {
     // Entry point
@@ -17,6 +17,7 @@ class Game
     println("GAME START");
     init();
     data = newGameData();
+    initJobs();
     pause();
 
     var p = newPet();
@@ -42,21 +43,74 @@ class Game
 
     var result:String = menu(
       "Main menu",
-      ["Pets", "Shop", "Quit"]
+      ["Pets", "Shop", "Jobs", "Quit"]
     );
     println(result+" was picked");
     println("Time is: "+data.hour+"hrs.");
     println("Realtime seconds: "+data.seconds+"sec.");
+
+    if (result == "Jobs") drawJobTable();
     if (result == "Quit") exit();
 
     pause();
+  }
+
+  public function drawJobTable():Void {
+    clear();
+    
+    var nameLen:Int = 0;
+    for (j in data.jobs)
+      nameLen = Std.int(Math.max(j.name.length, nameLen));
+
+    var lineLen:Int = 0;
+    for (job in data.jobs) {
+      var line:String = job.name;
+      while (line.length < nameLen) line += " ";
+      line+=" |";
+
+      for (i in 0...(job.start*4))
+	line += " ";
+      for (i in 0...((job.end-job.start)*4))
+	line += "#";
+
+      println(line);
+
+      lineLen = Std.int(Math.max(line.length, lineLen));
+    }
+
+    var timeBar:String = "";
+    for (i in 0...nameLen+2) timeBar += " ";
+    for (i in 0...24) {
+      var hr:Int = i;
+      var ext:String = "a ";
+      if (hr > 12) {
+	hr -= 12;
+	ext = "p ";
+      }
+      var hrString:String = Std.string(hr);
+      if (hrString.length == 1) hrString = "0"+hrString;
+      timeBar += hrString+ext;
+    }
+
+    var bottomBar:String = "";
+    for (i in 0...timeBar.length) bottomBar += "-";
+
+    var arrowBar:String = "";
+    for (i in 0...nameLen+2) arrowBar += " ";
+    for (i in 0...(data.hour*4)) arrowBar += " ";
+    arrowBar += "^";
+
+    println(bottomBar);
+    println(timeBar);
+    println(arrowBar);
   }
 
   public function newGameData():GameData {
     var d:GameData = {
       seconds: 0,
       hour: 0,
-      pets: []
+      pets: [],
+      jobs: []
     };
     return d;
   }
@@ -80,7 +134,8 @@ class Game
 typedef GameData = {
   seconds:Float,
   hour:Int,
-  pets:Array<Pet>
+  pets:Array<Pet>,
+  jobs:Array<Job>
 }
 
 typedef Pet = {
