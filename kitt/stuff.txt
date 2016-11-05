@@ -1,0 +1,49 @@
+While out on a moonwalk you hear distressed animal whining from the shadow of a crater. It's a little baby moon-demon, her leg snapped by some careless colonist's moon-bear trap.
+
+You clean her wound and wrap it in moon-bandages. She struggles and tries to get away from you.
+
+You curl up into the fetal position with her and vow to obliterate time itself to stop people from being such dicks.
+
+Stats:
+Trust - 0 - naturally goes up, raises exp gain rate
+Ferocity - 10
+Sensitivity - 50
+Piety - 0
+Rhythm - 15
+HP - 10/100
+
+
+
+HP - 10/100
+Level 1/25
+
+Jobs:
+
+3:00 PM -- 9:00 PM
+Moonrock Muncher (ferocity+, sensitivity-) moon chunk++, moon gem+
+
+12:00 PM -- 6:00 PM
+Maid (ferocity-, sensitivity+) soap bubble++, air duster+
+
+6:00AM -- 12:00 PM
+Priestess (piety+, sensitivity+) blessing++, max HP bonus+
+
+11:00PM -- 5:00 AM
+Assassin (piety-, sensitivity-, ferocity++) bounty++ [random resources], moon gem+
+
+6:00 PM -- 12:00 AM
+Underground Rave Queen (rhythm+++) glowstick++, air duster-
+
+Event Jobs:
+
+3:00AM -- 9:00 AM
+Eater of the Rich (piety--, ferocity++) moon gem+++
+
+9:00PM -- 3:00 AM
+Miner (rhythm+, sensitivity-) moon chunk+++, glowstick-, blessing-
+
+1:00AM -- 7:00 AM
+Accountant (rhythm---) moon chunk+++ moon gem+++
+
+
+

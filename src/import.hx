@@ -1,0 +1,2 @@
+import haxe.*;
+import Statics.*;
