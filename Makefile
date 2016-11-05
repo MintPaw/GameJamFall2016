@@ -20,7 +20,7 @@ all:
 cpp:
 	make bcpp rcpp
 bcpp:
-	haxe -cp src -main Main -cpp bin
+	haxe project.hxml
 rcpp:
 	(cd bin && ./Main)
 

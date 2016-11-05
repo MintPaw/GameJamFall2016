@@ -4,7 +4,6 @@ class Events
 {
 
 	public static function jobTicked(job:Job, pet:Pet):Void {
-		log('Job "${job.name}" ticked on pet "${pet.name}"');
 
 		pet.stamina -= 10;
 		pet.exp += 4;
@@ -54,27 +53,53 @@ class Events
 
 		if (pet.stamina <= 10 && job.name != "Sleep") {
 			pet.job = "None";
-			log('${pet.name} was tired and came home');
+			log('${pet.name} comes home, exhausted.');
 		}
 
-	}
-
-	public static function idlePetTicked(p:Pet):Void {
-		p.stamina -= 1;
-		p.exp += 1;
-		if (p.stamina <= 0) {
-			p.job = "Sleep";
-			log('${p.name} waited up for you, but couldn\'t quite make it.');
-		}
-	}
-
-	public static function equipmentTicks(p:Pet):Void {
-		for (item in p.items) {
-			if (item.name == "Spirit Increaser") {
-				p.spirit += 1;
+		if (pet.stamina >= pet.maxStamina && job.name == "Sleep") {
+			pet.job = "None";
+			if (Math.random() > 0.5) {
+				log('${pet.name} wakes feeling rejuvenated.');
 			} else {
-				log('Equipment "${item.name}" ticked on pet "${p.name}", but it was not intercepted');
+				log('${pet.name} stretches out in her bed.');
 			}
+		}
+
+	}
+
+	public static function idlePetTicked(pet:Pet):Void {
+		pet.stamina -= 1;
+		pet.exp += 1;
+		if (pet.stamina <= 0) {
+			pet.job = "Sleep";
+			log('${pet.name} waited up for you, but couldn\'t quite make it.');
+		}
+	}
+
+	public static function equipmentTicks(pet:Pet):Void {
+		for (item in pet.items) {
+			if (item.name == "Spirit Increaser") {
+				pet.spirit += 1;
+			} else {
+				log('Equipment "${item.name}" ticked on pet "${pet.name}", but it was not intercepted');
+			}
+		}
+	}
+
+	public static function equipmentAdded(pet:Pet, item:Item):Void {
+		log('Equipment "${item.name}" was added from pet "${pet.name}"');
+	}
+
+	public static function equipmentRemoved(pet:Pet, item:Item):Void {
+		log('Equipment "${item.name}" was removed from pet "${pet.name}"');
+	}
+
+	public static function consumableUsed(pet:Pet, item:Item):Void {
+		if (item.name == "Energy giver") {
+			pet.stamina += 50;
+			log('"${pet.name}" gained some energy');
+		} else {
+			log('Consumable "${item.name}" was consumed by pet "${pet.name}", but it was not intercepted');
 		}
 	}
 }

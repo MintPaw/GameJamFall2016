@@ -72,18 +72,19 @@ class Game
 				"Main menu",
 				["Pets", "Shop", "Jobs", "Refresh", "Quit"]
 		);
-		println(result+" was picked");
 
 		if (result == "Pets") {
 			clear();
 			drawPetsMenu();
-		}
-		if (result == "Jobs") {
+		} else if (result == "Jobs") {
 			clear();
 			drawJobTable();
 			pause();
+		} else if (result == "Shop") {
+			drawShop();
+		} else if (result == "Quit") {
+			exit();
 		}
-		if (result == "Quit") exit();
 	}
 
 	public function drawJobTable():Void {
@@ -156,18 +157,31 @@ class Game
 		println("Ferocity: "+pet.ferocity);
 		println("Spirit: "+pet.spirit);
 		println("Rhythm: "+pet.rhythm);
+		print("Equipment: ");
+
+		var addComma = false;
+		for (i in 0...3) {
+			if (pet.items[i] != null) {
+				if (addComma) println(" ,");
+				print(pet.items[i].name);
+				addComma = true;
+			}
+		}
+
 		println("");
 		println("Job: "+pet.job);
 		println("");
 
 		var petOptions:Array<String> = [];
-		petOptions.push("Items");
+		petOptions.push("Give consumable");
+		petOptions.push("Change equipment");
 		if (pet.job == "None") petOptions.push("Send to job") else petOptions.push("Come home");
 		petOptions.push("Back");
 
 		var result:String = menu("Pet", petOptions);
 
-		if (result == "Items") drawPetEquipmentMenu(pet);
+		if (result == "Give consumable") drawPetConsumableMenu(pet);
+		if (result == "Change equipment") drawPetEquipmentMenu(pet);
 		if (result == "Send to job") drawPetJobMenu(pet);
 		if (result == "Come home") {
 			pet.job = "None";
@@ -218,6 +232,8 @@ class Game
 			var it:Item = p.items[slot];
 			p.items.remove(it);
 			data.items.push(it);
+			equipmentRemoved(p, it);
+			pause();
 		} else {
 			drawPetEquipMenu(p);
 		}
@@ -237,6 +253,23 @@ class Game
 		var it:Item = itemByName(result);
 		data.items.remove(it);
 		p.items.push(it);
+		equipmentAdded(p, it);
+		pause();
+	}
+
+	public function drawPetConsumableMenu(p:Pet):Void {
+		var consumableChoices:Array<String> = [];
+		for (item in data.items)
+			if (item.consumable)
+				consumableChoices.push(item.name);
+
+		consumableChoices.push("Back");
+		var result:String = menu("Choose consumable", consumableChoices);
+		if (result == "Back") return;
+
+		var item:Item = itemByName(result);
+		consumableUsed(p, item);
+		data.items.remove(item);
 	}
 
 	public function newGameData():GameData {

@@ -126,9 +126,20 @@ Ferocity+. Trust+ She blushes and says it looks stupid. She wears it anyway.
 A little string of gems that makes a demon feel more mature.
 +10% EXP gain
 
+Sensitivity-, Trust- She tries to eat the necklace but her teeth aren't hard enough.
+Sensitivity+, Trust- She sniffs the necklace.
+Sensitivity+, Trust+ She looks at it, the glittery gems reflecting in her wide eyes.
+Sensitivity-, Trust+ She doesn't even seem to notice you draped it over her neck.
+
+
 (Equ) Washable Inverted Cross Tattoo - Moon Chunk x20, Moon Gem x10, Soap x10
 Makes a demon feel better about themselves, but less open to spirituality.
 -50% Spirit gain, +15% EXP gain
+
+Spirit-, Trust+ She thinks it's rad as heck.
+Spirit-, Trust- She's not sure if you're stereotyping her or not. 
+Spirit+, Trust+ She likes it, but she's a little worried about God hating her. You tell her it'll be fiiiine.
+Spirit+, Trust- She considers washing it off when you aren't looking, anxious about her eternal soul.
 
 (Equ) Nightlight - Moon Chunk x50, Moon Gem x50, Glowstick x20
 Gain +10 EXP per hour while resting
@@ -163,6 +174,7 @@ Whenever you gain stamina, gain +20 extra
 (Equ) Multiplicatizer Choker - Moon Chunk x750, Studded Glowchoker x3
 x1.5 EXP gain bonuses
 
+(Pet) 
 
 
 
