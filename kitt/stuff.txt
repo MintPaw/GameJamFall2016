@@ -62,26 +62,56 @@ Trust+, Ferocity-, Stamina+ She's not very hungry, but she licks a couple out fr
 Trust+, Ferocity-, Stamina- She gives a cute little keening and happily slurps the Treatz from your palm. Once her belly is full she sprawls out lazily and demon-purrs.
 Stamina max (She doesn't touch them. Too full.)
 
+
 (Con) Atlas Shrugged Paperback - Moon Chunk x15, Moon Gem x2
-Inspires a nihilistic worldview in adolescent demons.
+Inspires nihilism, especially in teen demons.
 Level 5-15:
--5 Piety, +5 Ferocity
+-5 Spirit, +5 Ferocity
+else:
+-2 Spirit, +2 Ferocity
+
+Sensitivity+, Spirit- It makes her feel pointless.
+Sensitivity-, Spirit+ "This is a load of bull-hockey," she says, but you can tell it still bothered her a little.
+Sensitivity+, Spirit+ She starts crying and questioning her faith. Once that's over her expression steels.
+Sensitivity-, Spirit- She found it sort of boring.
+
 
 (Con) Meth - Moon Chunk x20, Moon Gem x15, Air Duster x10
-Moon legends tell of a demon on meth, renowned as one of the most efficient and dangerous workers in history.
+Moon legends tell of a demon on meth, renowned as one of the most efficient and volatile workers in moon history.
 Stamina +60, Max Stamina -10, Trust -15%
 
+Trust-, Rhythm+ She gets really paranoid and uncomfortable around you. You catch her dancing in the other room.
+Trust-, Rhythm- She thinks there's moonbugs in the carpet.
+Trust+, Rhythm- The extra energy makes her want to dance all fancy and floppy. She isn't very good, but she's having fun, and that's what matters.
+Trust+, Rhythm+ She's twacked outta her dome zone. She grabs you by the hand and dances with you.
+
+
 (Con) Bubblebath - Moon Gem x10, Soap x10
-Best used to rejuvenate a demon through scrub-a-dub-dubbery. Works best on younguns.
+Best used to rejuvenate a demon through scrub-a-dub-dubbery.
 Level 1-15: +40 Stamina, Ferocity-, Trust +5
 Level 16-25: +20 Stamina, Ferocity-
+
+Ferocity-, Sensitivity- She doesn't seem to mind the scrubs nor the dubs.
+Ferocity-, Sensitivity+ She loves it. She asks you for a rubber ducky too next time.
+Ferocity+, Sensitivity- She snaps at the bubbles.
+Ferocity+, Sensitivity+ She pretends like she's too ferocious for a bubblebath, but you can tell she's having a great time.
+
 
 (Con) Glowforce Supersonic Energy Beverage - Moon Chunk x100, Moon Gem x50, Glowstick x10, Wine x10
 A lurid green energy drink
 Refills stamina, max stamina +5
 
+Rhythm+, Ferocity+ She goes wild and rips up the curtains and breakdances in the living room.
+Rhythm-, Ferocity- She starts rambling about demon culture and her parents.
+Rhythm+, Ferocity- You look away for a second and when you look back she's doing a lithe belly-dance sort of thing.
+Rhythm-, Ferocity+ She snaps at some birds outside the house and chases them eight blocks away.
+
 (Con) Richard Simmons Workout DVD: The Route to Cute Glutes - Moon Gem x150
 -40 stamina, max stamina +10, +50% remaining EXP
+
+Rhythm-, Spirit+ This guy is great, she says, barely able to follow the steps.
+Rhythm+, Spirit+ She works out big time. By the end of the DVD she's sprawled out on the couch panting.
+Rhythm-, Spirit- 
 
 (Equ) Cute Hat - Moon Chunk x1
 +5% EXP gain

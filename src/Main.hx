@@ -23,6 +23,8 @@ class Game
 		var p = newPet();
 		p.stamina = 20;
 
+		obtainConsumable("Energy giver");
+		obtainEquipment("Spirit Increaser");
 		while (true) {
 			clear();
 			update();
@@ -43,9 +45,13 @@ class Game
 	}
 
 	public function tick():Void {
-		for (p in data.pets)
+		for (p in data.pets) {
+			equipmentTicks(p);
 			if (p.job != "None")
-					jobTicked(jobByName(p.job), p);
+				jobTicked(jobByName(p.job), p);
+			else
+				idlePetTicked(p);
+		}
 	}
 
 	public function drawMainMenu():Void {
@@ -56,10 +62,9 @@ class Game
 			if (data.log[i] != null)
 				println(data.log[i]);
 
-		print("\n\n");
 		var result:String = menu(
 				"Main menu",
-				["Pets", "Shop", "Jobs", "Quit"]
+				["Pets", "Shop", "Jobs", "Refresh", "Quit"]
 				);
 		println(result+" was picked");
 
@@ -145,6 +150,7 @@ class Game
 		println("Rhythm: "+pet.rhythm);
 		println("");
 		println("Job: "+pet.job);
+		println("");
 
 		var petOptions:Array<String> = [];
 		petOptions.push("Items");
@@ -153,6 +159,7 @@ class Game
 
 		var result:String = menu("Pet", petOptions);
 
+		if (result == "Items") drawPetEquipmentMenu(pet);
 		if (result == "Send to job") drawPetJobMenu(pet);
 		if (result == "Come home") {
 			pet.job = "None";
@@ -162,7 +169,6 @@ class Game
 	}
 
 	public function drawPetJobMenu(pet:Pet):Void {
-		print("\n\n");
 		drawJobTable();
 
 		var jobNames:Array<String> = [];
@@ -184,12 +190,54 @@ class Game
 		}
 	}
 
+	public function drawPetEquipmentMenu(p:Pet):Void {
+		var slotChoices:Array<String> = [];
+		for (i in 0...3) {
+			if (p.items[i] == null)
+				slotChoices.push("Equip to slot "+(i+1));
+			else
+				slotChoices.push("Remove the "+p.items[i].name);
+		}
+
+		slotChoices.push("Back");
+		var result:String = menu("Equipment action", slotChoices);
+		if (result == "Back") return;
+
+		var slot:Int = slotChoices.indexOf(result);
+		var toRemove:Bool = result.indexOf("Remove") != -1;
+
+		if (toRemove) {
+			var it:Item = p.items[slot];
+			p.items.remove(it);
+			data.items.push(it);
+		} else {
+			drawPetEquipMenu(p);
+		}
+	}
+
+	public function drawPetEquipMenu(p:Pet):Void {
+		var equipmentChoices:Array<String> = [];
+		for (it in data.items)
+			if (it.equippable)
+				equipmentChoices.push(it.name);
+
+		equipmentChoices.push("Back");
+		var result:String = menu("Choose equipment", equipmentChoices);
+		if (result == "Back") return;
+
+		update();
+		var it:Item = itemByName(result);
+		data.items.remove(it);
+		p.items.push(it);
+	}
+
 	public function newGameData():GameData {
 		var d:GameData = {
 			seconds: 0,
 			hour: 0,
 			pets: [],
 			jobs: [],
+			items: [],
 			log: []
 		};
 		return d;
@@ -206,6 +254,7 @@ class Game
 		var pet:Pet = {
 			name: "noname pet",
 			job: "None",
+			items: [],
 			maxStamina: 100,
 			stamina: 100,
 			trust: 0,
@@ -224,12 +273,14 @@ typedef GameData = {
 	hour:Int,
 	pets:Array<Pet>,
 	jobs:Array<Job>,
+	items:Array<Item>,
 	log:Array<String>
 }
 
 typedef Pet = {
 	name:String,
 	job:String,
+	items:Array<Item>,
 
 	maxStamina:Int,
 	stamina:Int,

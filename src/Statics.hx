@@ -52,10 +52,7 @@ class Statics
 		return passed;
 	}
 
-	public static function menu(
-			title:String,
-			options:Array<String>
-			):String {
+	public static function menu(title:String, options:Array<String>):String {
 		println(title+":");
 		for (i in 0...options.length) {
 			if (i < 9) println((i+1)+". "+options[i]);
@@ -82,6 +79,7 @@ class Statics
 			break;
 		}
 
+		print("\n");
 		return options[result-1];
 	}
 }
