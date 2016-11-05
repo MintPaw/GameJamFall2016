@@ -48,10 +48,11 @@ class Events
 			pet.rhythm -= 2;
 			pet.spirit -= 2;
 		} else if (job.name == "Sleep") {
+			pet.exp -= 4;
 			pet.stamina += 20;
 		}
 
-		if (pet.stamina <= 10) {
+		if (pet.stamina <= 10 && job.name != "Sleep") {
 			pet.job = "None";
 			log('${pet.name} was tired and came home');
 		}

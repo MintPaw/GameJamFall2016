@@ -71,7 +71,7 @@ class Game
 		var result:String = menu(
 				"Main menu",
 				["Pets", "Shop", "Jobs", "Refresh", "Quit"]
-				);
+		);
 		println(result+" was picked");
 
 		if (result == "Pets") {

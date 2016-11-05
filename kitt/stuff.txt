@@ -117,10 +117,10 @@ Rhythm+, Spirit- She follows the steps with absolute perfection. This is boring,
 (Equ) Cute Hat - Moon Chunk x1
 +5% EXP gain
 
-Ferocity+, Trust- 
-Ferocity-, Trust+
-Ferocity-, Trust-
-Ferocity+. Trust+
+Ferocity+, Trust- She eats the hat. You stitch it back together and tell her to stop that.
+Ferocity-, Trust+ She looks adorable.
+Ferocity-, Trust- She nibbles at the hat, wary.
+Ferocity+. Trust+ She blushes and says it looks stupid. She wears it anyway.
 
 (Equ) Cute Necklace - Moon Gem x8
 A little string of gems that makes a demon feel more mature.
