@@ -8,7 +8,7 @@ Stats:
 Trust - 0 - naturally goes up, raises exp gain rate
 Ferocity - 0
 Sensitivity - 0
-Spirituality - 0
+Spirit - 0
 Rhythm - 0
 Stamina - 50/100
 
@@ -16,34 +16,34 @@ Level 1/25
 
 Jobs:
 
-3:00 PM -- 9:00 PM
+15, 21
 Moonrock Muncher (ferocity+, sensitivity-) moon chunk++, moon gem+
 
-12:00 PM -- 6:00 PM
+12, 18
 Maid (ferocity-, sensitivity+) soap++, moon chunk+, air duster+
 
-6:00AM -- 12:00 PM
-Priestess (spirituality++, sensitivity++, ferocity--) wine++, moon gem+, max stamina+
+6, 12
+Priestess (Spirit++, sensitivity++, ferocity--) wine++, moon gem+, max stamina+
 
-12:00AM -- 6:00 AM
-Burgler (spirituality-, sensitivity--, ferocity++) bounty++ [random resources], moon chunk+, moon gem+
+0, 6
+Burglemeister (spirit-, sensitivity--, ferocity++) bounty++ [random resources], moon chunk+, moon gem+
 
-6:00 PM -- 12:00 AM
-Underground Rave Goddess (rhythm+++, spirituality+++) glowstick++, meth-, red wine-
+18, 0
+Rave Goddess (rhythm+++, spirit+++) glowstick++, meth-, wine-
 
-5:00 PM -- 11:00 PM
+17, 23
 Game Designer (rhythm-, ferocity---) bounty+++, moon chunk-, moon gem-, red wine- max stamina-
 
 Event Jobs:
 
-3:00AM -- 9:00 AM
-Eater of the Rich (spirituality--, ferocity++) moon gem+++
+3, 9
+Eater of the Rich (spirit--, ferocity++) moon gem++++
 
-7:00AM -- 1:00 PM
-Miner (rhythm+, sensitivity-) moon chunk+++, glowstick-
+7, 13
+Moongem Miner (rhythm+, sensitivity-) moon chunk+++, moon gem+++, glowstick-
 
-1:00AM -- 7:00 AM
-Banker (rhythm--, spirituality--) moon chunk++++ moon gem+++
+9, 15
+Banker (rhythm--, spirit--) moon chunk++++ moon gem+++
 
 Items:
 
@@ -68,29 +68,63 @@ Level 5-15:
 -5 Piety, +5 Ferocity
 
 (Con) Meth - Moon Chunk x20, Moon Gem x15, Air Duster x10
-A demon on meth is the best  
-Stamina +60, Max Stamina -10, Trust -5
+Moon legends tell of a demon on meth, renowned as one of the most efficient and dangerous workers in history.
+Stamina +60, Max Stamina -10, Trust -15%
 
 (Con) Bubblebath - Moon Gem x10, Soap x10
 Best used to rejuvenate a demon through scrub-a-dub-dubbery. Works best on younguns.
 Level 1-15: +40 Stamina, Ferocity-, Trust +5
 Level 16-25: +20 Stamina, Ferocity-
 
-(Con) Glowforce Supersonic Energy Beverage - Moon Chunk x100, Moon Gem x50, Glowstick x10
+(Con) Glowforce Supersonic Energy Beverage - Moon Chunk x100, Moon Gem x50, Glowstick x10, Wine x10
 A lurid green energy drink
 Refills stamina, max stamina +5
 
 (Con) Richard Simmons Workout DVD: The Route to Cute Glutes - Moon Gem x150
--40 stamina, max stamina +10, +2 levels
+-40 stamina, max stamina +10, +50% remaining EXP
 
 (Equ) Cute Hat - Moon Chunk x1
-+1% EXP gain
++5% EXP gain
 
 (Equ) Cute Necklace - Moon Gem x8
 A little string of gems that makes a demon feel more mature.
-+5% EXP gain
++10% EXP gain
 
-(Equ) Washable Inverted Cross Tattoo - 
+(Equ) Washable Inverted Cross Tattoo - Moon Chunk x20, Moon Gem x10, Soap x10
+Makes a demon feel better about themselves, but less open to spirituality.
+-50% Spirit gain, +15% EXP gain
+
+(Equ) Nightlight - Moon Chunk x50, Moon Gem x50, Glowstick x20
+Gain +10 EXP per hour while resting
+
+(Equ) Comfy Little Bed of Spikes - Moon Chunk x300
+Gain +20 EXP per hour while resting and -1 sensitivity
+
+(Equ) Heavenly Bed - Moon Chunk x600
+Gain +40 EXP per hour while resting and +2 sensitivity and +2 spirit
+
+(Equ) The Devil's Own Crusty Mattress - Moon Chunk x100, Moon Gem x40, Washable Inverted Cross Tattoo x3
+Consumes 3 spirit and gives +66 EXP, +3 ferocity while resting
+
+(Equ) Studded Glowchoker - Moon Gem x80, Glowstick x30
+Stamina depletes 30% slower
+
+(Equ) Steamy Shower - x200 Moon Chunks, x10 Soap, x30 Air Duster
++75 EXP and +2 sensitivity at the start of each shift, +10% EXP gain
+
+(Equ) Alcoholic Smoothie Machine - Moon Chunk x350, x100 Moon Gem, x50 Wine, x10 Demon Treatz
++250 EXP at the end of each shift
+
+(Equ) Heisenberg Hat - Meth x100
+Meth no longer lowers max stamina or trust
+
+(Equ) Cuter Hat - Moon Chunk x200, Moon Gem x200
++40% EXP gain
+
+(Equ) Flowing Dazzlegown - Moon Gem x250
+Whenever you gain stamina, gain +20 extra
+
+
 
 
 

@@ -41,23 +41,27 @@ class Game
   public function drawMainMenu():Void {
     clear();
 
+    println("Time is: "+data.hour+"hrs.");
+    println("Realtime seconds: "+data.seconds+"sec.");
     var result:String = menu(
       "Main menu",
       ["Pets", "Shop", "Jobs", "Quit"]
     );
     println(result+" was picked");
-    println("Time is: "+data.hour+"hrs.");
-    println("Realtime seconds: "+data.seconds+"sec.");
 
-    if (result == "Jobs") drawJobTable();
+    if (result == "Pets") {
+      clear();
+      drawPetsMenu();
+    }
+    if (result == "Jobs") {
+      clear();
+      drawJobTable();
+      pause();
+    }
     if (result == "Quit") exit();
-
-    pause();
   }
 
   public function drawJobTable():Void {
-    clear();
-    
     var nameLen:Int = 0;
     for (j in data.jobs)
       nameLen = Std.int(Math.max(j.name.length, nameLen));
@@ -105,6 +109,65 @@ class Game
     println(arrowBar);
   }
 
+  public function drawPetsMenu():Void {
+    var petNames:Array<String> = [];
+    for (p in data.pets) petNames.push(p.name);
+    petNames.push("Back");
+
+    var result:String = menu("Pets", petNames);
+    if (result != "Back") drawPetMenu(result);
+  }
+
+  public function drawPetMenu(petName:String):Void {
+    var pet:Pet = petByName(petName);
+
+    clear();
+    println("Name: "+pet.name);
+    println("Stamina: "+pet.stamina+"/"+pet.maxStamina);
+    println("Trust: "+pet.trust);
+    println("Sensitivity: "+pet.sensitivity);
+    println("Ferocity: "+pet.ferocity);
+    println("Spirit: "+pet.spirit);
+    println("Rhythm: "+pet.rhythm);
+    println("");
+    println("Job: "+pet.job);
+
+    var petOptions:Array<String> = [];
+    petOptions.push("Items");
+    if (pet.job == "None") petOptions.push("Send to job") else petOptions.push("Come home");
+    petOptions.push("Back");
+
+    var result:String = menu("Pet", petOptions);
+
+    if (result == "Send to job") drawPetJobMenu(pet);
+    if (result == "Come home") {
+      pet.job = "None";
+      println("Pet came home.");
+      pause();
+    }
+  }
+
+  public function drawPetJobMenu(pet:Pet):Void {
+    print("\n\n");
+    drawJobTable();
+
+    var jobNames:Array<String> = [];
+    for (job in data.jobs) jobNames.push(job.name);
+    jobNames.push("Back");
+    var result:String = menu("Which job", jobNames);
+
+    if (result != "Back") {
+      if (isJobReady(result)) {
+	pet.job = result;
+	println("Pet went to job.");
+	pause();
+      } else {
+	println("Job not currently available.");
+	pause();
+      }
+    }
+  }
+
   public function newGameData():GameData {
     var d:GameData = {
       seconds: 0,
@@ -115,16 +178,24 @@ class Game
     return d;
   }
 
+  public function petByName(name:String):Pet {
+    for (p in data.pets)
+      if (p.name == name)
+	return p;
+    return null;
+  }
+
   public function newPet():Pet {
     var pet:Pet = {
-      name: "noname",
+      name: "noname pet",
+      job: "None",
       maxStamina: 100,
       stamina: 100,
       trust: 0,
       sensitivity: 0,
       ferocity: 0,
-      piety: 0,
-      rhythm: 0,
+      spirit: 0,
+      rhythm: 0
     }
     data.pets.push(pet);
     return pet;
@@ -140,6 +211,7 @@ typedef GameData = {
 
 typedef Pet = {
   name:String,
+  job:String,
 
   maxStamina:Int,
   stamina:Int,
@@ -147,6 +219,6 @@ typedef Pet = {
   trust:Int,
   sensitivity:Int,
   ferocity:Int,
-  piety:Int,
+  spirit:Int,
   rhythm:Int
 }
