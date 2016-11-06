@@ -142,13 +142,34 @@ Spirit+, Trust+ She likes it, but she's a little worried about God hating her. Y
 Spirit+, Trust- She considers washing it off when you aren't looking, anxious about her eternal soul.
 
 (Equ) Nightlight - Moon Chunk x50, Moon Gem x50, Glowstick x20
-Gain +10 EXP per hour while resting
+Gain +2 EXP per hour while resting
+
+if (pet.sensitivity >= 50 && pet.spirit >= 50) {
+	log('She thinks the light is God and reveres it.');
+} else if (pet.sensitivity >= 50 && pet.spirit <= 50) {
+	log('It\'s too bright. She makes you put a sticker over it.');
+} else if (pet.sensitivity <= 50 && pet.spirit <= 50) {
+	log('She\'s sort of embarrassed. She doesn\'t think she needs a god-darn nightlight.');
+} else if (pet.sensitivity <= 50 && pet.spirit >= 50) {
+	log('She thinks her new nightlight is a ghost.');
+}
 
 (Equ) Comfy Little Bed of Spikes - Moon Chunk x300
-Gain +20 EXP per hour while resting and -1 sensitivity
+Gain +8 EXP per hour while resting and -1 sensitivity
+
+if (pet.ferocity >= 50 && pet.spirit >= 50) {
+	log('She says her prayers at night with her elbows on the spikes, totally unperturbed.');
+} else if (pet.ferocity >= 50 && pet.spirit <= 50) {
+	log('She loves jumping on her bed.');
+} else if (pet.ferocity <= 50 && pet.spirit <= 50) {
+	log('She\'s a little terrified of it at first, but you show her the spikes don\'t hurt if you lay on it right.');
+} else if (pet.ferocity <= 50 && pet.spirit >= 50) {
+	log('She calls it a \"Satan bed\" and refuses to sleep on it. You\'re a demon, you remind her. Oh yeah, she says.');
+}
+
 
 (Equ) Heavenly Bed - Moon Chunk x600
-Gain +40 EXP per hour while resting and +2 sensitivity and +2 spirit
+Gain +32 EXP per hour while resting and +2 sensitivity and +2 spirit
 
 (Equ) The Devil's Own Crusty Mattress - Moon Chunk x100, Moon Gem x40, Washable Inverted Cross Tattoo x3
 Consumes 3 spirit and gives +66 EXP, +3 ferocity per hour while resting
@@ -168,16 +189,15 @@ Meth no longer lowers max stamina or trust
 (Equ) Cuter Hat - Moon Chunk x200, Moon Gem x200
 +40% EXP gain
 
-(Equ) Flowing Dazzlegown - Moon Gem x250
-Whenever you gain stamina, gain +20 extra
-
 (Equ) Multiplicatizer Choker - Moon Chunk x750, Studded Glowchoker x3
 x1.5 EXP gain bonuses
 
+(Pet) Stitched Demon - Moon Chunk x200
+A demonling made of sack-cloth and ripped flowery grandma clothes. Some asshole is using her as a rag for his nasty messes. He says he'll sell her to ya for two hundred chunks.
+
+(Pet) Demon Prince of Ultradestruction - Moon Gem x80, Meth x2
+An incredibly ferocious little demon boy in overalls, currently held and weaponized by a drug lord. You think some gems and drugs might loosen his grip.
+
 (Pet) 
-
-
-
-
 
 

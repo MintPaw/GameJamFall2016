@@ -4,7 +4,9 @@ class Statics
 {
 	public static var lastTime:Float = 0;
 	public static var letters:Array<String> = [
-		"a", "b", "c", "d", "e"
+		"a", "b", "c", "d", "e", "f", "g", "h", "i",
+		"j", "k", "l", "m", "n", "o", "p", "q", "r",
+		"s", "t", "u", "v", "w", "x", "y", "z"
 	];
 
 	public static function init():Void {
@@ -30,6 +32,10 @@ class Statics
 	public static function getChar(echo:Bool=true):String {
 		var result = Sys.getChar(echo);
 		return String.fromCharCode(result);
+	}
+
+	public static function getString():String {
+		return Sys.stdin().readLine();
 	}
 
 	public static function pause(echo:Bool=true):Void {
@@ -82,4 +88,12 @@ class Statics
 		print("\n");
 		return options[result-1];
 	}
+
+  public static function pickOne(array:Array<Dynamic>, exclude:Array<Dynamic>=null):Dynamic {
+    if (array.length == 0) return -1;
+    if (exclude == null) exclude = [];
+    var result:Dynamic = null;
+    while (result == null || exclude.indexOf(result) != -1) result = array[Math.floor(Math.random()*array.length)];
+    return result;
+  }
 }

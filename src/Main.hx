@@ -15,16 +15,23 @@ class Game
 		// Entry point
 		clear();
 		println("GAME START");
+		Sys.stdin().readByte();
 		init();
 		data = newGameData();
 		initJobs();
+		initShop();
 		pause();
 
-		var p = newPet();
-		p.stamina = 20;
+		genPet();
 
-		obtainConsumable("Energy giver");
-		obtainEquipment("Spirit Increaser");
+		// for (i in 0...20) obtainConsumable("Moon Gem");
+		// for (i in 0...20) obtainConsumable("Soap");
+		// obtainConsumable("Energy giver");
+		// obtainConsumable("Demon Treatz");
+		// obtainConsumable("Atlas Shrugged Paperback");
+		// obtainConsumable("Bubblebath");
+		// obtainConsumable("Meth");
+		// obtainEquipment("Spirit Increaser");
 		while (true) {
 			clear();
 			update();
@@ -32,21 +39,33 @@ class Game
 		}
 	}
 
+	public function genPet():Void {
+		var p = newPet();
+		foundPet(p);
+	}
+
 	public function update():Void {
 		var secondsInHour:Float = 10;
+		var hoursInDay:Float = 24;
 
 		data.seconds += pollElapsed();
 		var hoursPassed:Int = Std.int(data.seconds / secondsInHour);
 		data.seconds -= hoursPassed*secondsInHour;
 		data.hour += hoursPassed;
 
+		var daysPassed:Int = Std.int(data.hour / hoursInDay);
+		data.hour -= Std.int(daysPassed*hoursInDay);
+		data.day += daysPassed;
+
 		for (i in 0...hoursPassed)
-			tick();
+			hourTick();
+
+		for (i in 0...daysPassed)
+			dayTick();
 	}
 
-	public function tick():Void {
+	public function hourTick():Void {
 		for (p in data.pets) {
-			equipmentTicks(p);
 			if (p.job != "None")
 				jobTicked(jobByName(p.job), p);
 			else
@@ -55,13 +74,24 @@ class Game
 			if (p.exp > Math.pow(2, p.level)) {
 				p.exp = 0;
 				p.level++;
-				log('"${p.name}" gained a level');
+				log('"${p.name}" gained a level.');
 			}
 		}
 	}
 
+	public function dayTick():Void {
+		if (data.day % 5 == 0 && data.pets.length <= 5) genPet();
+		for (p in data.pets)
+			equipmentTicks(p);
+	}
+
 	public function drawMainMenu():Void {
-		println("Time is: "+data.hour+"hrs.");
+		var time:Int = data.hour % 24;
+		var timeStr:String = "";
+		if (time <= 12) timeStr = time+":00 am";
+		else timeStr = (time-12)+":00 pm";
+
+		println('Day ${data.day} $timeStr');
 		println("Realtime seconds: "+data.seconds+"sec.");
 		println("Log:");
 		for (i in data.log.length-10...data.log.length)
@@ -70,8 +100,8 @@ class Game
 
 		var result:String = menu(
 				"Main menu",
-				["Pets", "Shop", "Jobs", "Refresh", "Quit"]
-		);
+				["Pets", "Shop", "Jobs", "Refresh", "Simulate 10 real seconds", "Simulate 1 real hour" ,"Quit"]
+				);
 
 		if (result == "Pets") {
 			clear();
@@ -82,6 +112,10 @@ class Game
 			pause();
 		} else if (result == "Shop") {
 			drawShop();
+		} else if (result == "Simulate 10 real seconds") {
+			lastTime -= 10;
+		} else if (result == "Simulate 1 real hour") {
+			lastTime -= 60*60;
 		} else if (result == "Quit") {
 			exit();
 		}
@@ -175,6 +209,7 @@ class Game
 		var petOptions:Array<String> = [];
 		petOptions.push("Give consumable");
 		petOptions.push("Change equipment");
+		petOptions.push("Change name");
 		if (pet.job == "None") petOptions.push("Send to job") else petOptions.push("Come home");
 		petOptions.push("Back");
 
@@ -182,6 +217,7 @@ class Game
 
 		if (result == "Give consumable") drawPetConsumableMenu(pet);
 		if (result == "Change equipment") drawPetEquipmentMenu(pet);
+		if (result == "Change name") drawPetNameMenu(pet);
 		if (result == "Send to job") drawPetJobMenu(pet);
 		if (result == "Come home") {
 			pet.job = "None";
@@ -239,15 +275,31 @@ class Game
 		}
 	}
 
+	public function drawPetNameMenu(pet:Pet):Void {
+		clear();
+		print('Change ${pet.name}\'s name to: ');
+		pet.name = getString();
+		println('Pet has been renamed to ${pet.name}');
+		pause();
+	}
+
 	public function drawPetEquipMenu(p:Pet):Void {
 		var equipmentChoices:Array<String> = [];
 		for (it in data.items)
 			if (it.equippable)
-				equipmentChoices.push(it.name);
+				if (equipmentChoices.indexOf(it.name) == -1)
+					equipmentChoices.push(it.name);
+
+		for (i in 0...equipmentChoices.length) {
+			equipmentChoices[i] += "| x" + itemCountByName(equipmentChoices[i]);
+		}
 
 		equipmentChoices.push("Back");
 		var result:String = menu("Choose equipment", equipmentChoices);
 		if (result == "Back") return;
+
+		result = result.substring(0, result.indexOf("|"));
+		println("Chose " + result);
 
 		update();
 		var it:Item = itemByName(result);
@@ -270,15 +322,18 @@ class Game
 		var item:Item = itemByName(result);
 		consumableUsed(p, item);
 		data.items.remove(item);
+		pause();
 	}
 
 	public function newGameData():GameData {
 		var d:GameData = {
 			seconds: 0,
 			hour: 0,
+			day: 0,
 			pets: [],
 			jobs: [],
 			items: [],
+			products: [],
 			log: []
 		};
 		return d;
@@ -293,7 +348,7 @@ class Game
 
 	public function newPet():Pet {
 		var pet:Pet = {
-			name: "noname pet",
+			name: "pet"+data.pets.length,
 			job: "None",
 			items: [],
 			exp: 0,
@@ -314,9 +369,11 @@ class Game
 typedef GameData = {
 	seconds:Float,
 	hour:Int,
+	day:Int,
 	pets:Array<Pet>,
 	jobs:Array<Job>,
 	items:Array<Item>,
+	products:Array<Product>,
 	log:Array<String>
 }
 
