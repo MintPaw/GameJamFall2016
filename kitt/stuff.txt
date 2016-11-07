@@ -115,7 +115,7 @@ Rhythm-, Spirit- She doesn't have much fun with it.
 Rhythm+, Spirit- She follows the steps with absolute perfection. This is boring, she says.
 
 (Equ) Cute Hat - Moon Chunk x1
-+5% EXP gain
++5 EXP gain
 
 Ferocity+, Trust- She eats the hat. You stitch it back together and tell her to stop that.
 Ferocity-, Trust+ She looks adorable.
@@ -185,6 +185,9 @@ Stamina depletes 30% slower
 
 (Equ) Heisenberg Hat - Meth x100
 Meth no longer lowers max stamina or trust
++100 EXP per day
+
+if (pet.ferocity >= 50) log('She tells you to say her name.') else log('She thinks it's pretty swankish.);
 
 (Equ) Cuter Hat - Moon Chunk x200, Moon Gem x200
 +40% EXP gain

@@ -21,10 +21,10 @@ class Events
 			//Resources
 			if (rand >= 0.5) {
 				for (i in 0...2) obtainItem("Moon Chunk");
-				obtainItem("Moon Gem");
+				for (i in 0...10) obtainItem("Moon Gem");
 			} else if (rand <= 0.4) {
-				for (i in 0...3) obtainItem("Moon Chunk");
-				obtainItem("Moon Gem");
+				for (i in 0...5) obtainItem("Moon Chunk");
+				for (i in 0...2) obtainItem("Moon Gem");
 			} else {
 				for (i in 0...3) obtainItem("Moon Gem");
 				for (i in 0...3) obtainItem("Moon Chunk");
@@ -35,15 +35,15 @@ class Events
 			pet.sensitivity += 1;
 			//Resources
 			if (rand >= 0.5) {
-				obtainItem("Soap");
-				obtainItem("Air Duster");
-				obtainItem("Moon Chunk");
+				for (i in 0...3) obtainItem("Soap");
+				for (i in 0...3) obtainItem("Air Duster");
+				for (i in 0...5) obtainItem("Moon Chunk");
 			} else if (rand <= 0.4) {
 				for (i in 0...2) obtainItem("Soap");
 				obtainItem("Air Duster");
 			} else {
 				for (i in 0...3) obtainItem("Soap");
-				for (i in 0...3) obtainItem("Moon Chunk");
+				for (i in 0...5) obtainItem("Moon Chunk");
 			}
 		} else if (job.name == "Priestess") {
 			//Stats
@@ -56,12 +56,13 @@ class Events
 				obtainItem("Moon Gem");
 				
 			} else if (rand <= 0.2) {
-				for (i in 0...2) obtainItem("Moon Gem");
-				for (i in 0...2) obtainItem("Wine");
+				for (i in 0...6) obtainItem("Moon Gem");
+				for (i in 0...6) obtainItem("Wine");
 				pet.maxStamina++;
 			} else {
 				obtainItem("Moon Gem");
-				for (i in 0...3) obtainItem("Wine");
+				for (i in 0...6) obtainItem("Wine");
+				for (i in 0...6) obtainItem("Moon Gem");
 			}
 		} else if (job.name == "Burglemeister") {
 			//Stats
@@ -73,11 +74,11 @@ class Events
 				bounty(1);
 			} else if (rand <= 0.2) {
 				bounty(2);
-				for (i in 0...2) obtainItem("Moon Gem");
+				for (i in 0...10) obtainItem("Moon Chunk");
 				pet.maxStamina++;
 			} else {
-				obtainItem("Moon Chunk");
-				bounty(3);
+				for (i in 0...10) obtainItem("Moon Chunk");
+				bounty(10);
 			}
 		} else if (job.name == "Rave Goddess") {
 			//Stats
@@ -85,14 +86,16 @@ class Events
 			pet.spirit += 3;
 			//Resources
 			if (rand >= 0.5) {
-				for (i in 0...2) obtainItem("Glowstick");
+				for (i in 0...5) obtainItem("Glowstick");
 					
 			} else if (rand <= 0.2) {
-				for (i in 0...4) obtainItem("Glowstick");
+				for (i in 0...10) obtainItem("Glowstick");
 					if (itemCountByName("Meth") > 0) removeItem("Meth");
 			} else {
 				obtainItem("Moon Chunk");
-				for (i in 0...4) obtainItem("Glowstick");
+				for (i in 0...10) obtainItem("Glowstick");
+				for (i in 0...10) obtainItem("Moon Chunk");
+				for (i in 0...6) obtainItem("Moon Gem");
 				if (itemCountByName("Wine") > 0) removeItem("Wine");
 			}
 		} else if (job.name == "Game Designer") {
@@ -101,15 +104,15 @@ class Events
 			pet.ferocity -= 3;
 			//Resources
 			if (rand >= 0.5) {
-				bounty(5);
+				bounty(10);
 				if (itemCountByName("Moon Chunk") > 0) removeItem("Moon Chunk");
 				if (itemCountByName("Moon Chunk") > 0) removeItem("Moon Gem"); 
 			} else if (rand <= 0.05) {
-				bounty(10);
+				bounty(30);
 				pet.maxStamina--;
 			} else {
-				bounty(3);
-				obtainItem("Moon Chunk");
+				bounty(15);
+				for (i in 0...10) obtainItem("Moon Chunk");
 				if (itemCountByName("Wine") > 0) removeItem("Wine");
 				
 			}
@@ -117,16 +120,55 @@ class Events
 			//Stats
 			pet.spirit -= 2;
 			pet.ferocity += 2;
+			// Resources
+			if (rand >= 0.5) {
+				for (i in 0...5) obtainItem("Moon Gem");
+				
+			} else if (rand <= 0.05) {
+				for (i in 0...30) obtainItem("Moon Gem");
+				pet.maxStamina++;
+			} else {
+				for (i in 0...5) obtainItem("Moon Gem");
+				for (i in 0...5) obtainItem("Moon Chunk");
+			}
 		} else if (job.name == "Moongem Miner") {
 			//Stats
 			pet.rhythm += 1;
 			pet.sensitivity -= 1;
+			//Resources
+			if (rand >= 0.5) {
+				for (i in 0...5) obtainItem("Moon Gem");
+				for (i in 0...10) obtainItem("Moon Chunk");
+				
+			} else if (rand <= 0.05) {
+				for (i in 0...30) obtainItem("Moon Gem");
+				for (i in 0...30) obtainItem("Moon Chunk");
+				pet.maxStamina--;
+			} else {
+				for (i in 0...20) obtainItem("Moon Gem");
+				for (i in 0...40) obtainItem("Moon Chunk");
+				if (itemCountByName("Glowstick") > 0) removeItem("Glowstick");
+			}
 		} else if (job.name == "Banker") {
 			//Stats
 			pet.rhythm -= 2;
 			pet.spirit -= 2;
+			//Resources
+			if (rand >= 0.9) {
+				for (i in 0...50) obtainItem("Moon Chunk");
+				
+			} else if (rand <= 0.05) {
+				for (i in 0...10) obtainItem("Moon Gem");
+				for (i in 0...50) obtainItem("Moon Chunk");
+			} else {
+				if (rand > 0.5) {
+				for (i in 0...5) obtainItem("Moon Gem");
+				} else {
+				for (i in 0...10) obtainItem("Moon Chunk");
+				}
+			}
 		} else if (job.name == "Sleep") {
-			pet.exp -= 4;
+			pet.exp -= 1;
 			pet.stamina += 20;
 		} else if (job.name == "Test job") {
 			log('Job ticked');
@@ -145,6 +187,7 @@ class Events
 		if (pet.stamina <= 10 && job.name != "Sleep") {
 			pet.job = "None";
 			log('${pet.name} comes home exhausted.');
+			return; // TODO: Be super careful
 		}
 
 		if (pet.stamina >= pet.maxStamina && job.name == "Sleep") {
@@ -154,6 +197,12 @@ class Events
 			} else {
 				log('${pet.name} stretches out in her bed.');
 			}
+			return; // TODO: Be super careful
+		}
+
+		if (!isJobReady(pet.job)) {
+			if (pet.job != "Sleep") log('${pet.name}\'s shift ended');
+			pet.job = "None";
 		}
 
 	}
@@ -167,14 +216,39 @@ class Events
 		}
 	}
 
-	public static function equipmentTicks(pet:Pet):Void {
+
+	public static function dayTicks(pet:Pet):Void {
 		for (item in pet.items) {
-			if (item.name == "Spirit Increaser") {
-				pet.spirit += 1;
-			} else {
-				log('Equipment "${item.name}" ticked on pet "${pet.name}", but it was not intercepted');
+			if (item.name == "Cute Hat") {
+				pet.exp++;
+				log('${pet.name} gained 1 EXP from the Cute Hat today.');
+			} else if (item.name == "Cute Necklace") {
+				pet.exp += 4;
+				log('${pet.name} gained 4 EXP from the Cute Necklace today.');
+			} else if (item.name == "Washable Inverted Cross Tattoo") {
+				pet.exp += 10;
+				pet.spirit -= 2;
+				log('${pet.name} gained 10 EXP and lost 2 spirit from the Washable Inverted Cross Tattoo today.');
+			} else if (item.name == "Nightlight") {
+				if (pet.job == "Sleep") pet.exp += 25;
+				log('${pet.name} got to sleep at a reasonable hour and Nighlight gained her 25 EXP!');
+			} else if (item.name == "Comfy Little Bed of Spikes") {
+				if (pet.job == "Sleep") pet.exp += 40;
+				log('${pet.name} got to sleep at a reasonable hour and Comfy Little Bed of Spikes gained her 40 EXP!');
+			} else if (item.name == "Heisenberg Hat") {
+				pet.exp += 100;
+				log('${pet.name} gained 100 EXP from the Heisenberg Hat today. She\'s also very comfortable with meth now.');
 			}
 		}
+
+		var win:Bool = true;
+		for (p in Game.data.pets)
+			if (p.level < 10)
+				win = false;
+
+		if (win)
+			log("You win!");
+
 	}
 
 	public static function equipmentAdded(pet:Pet, item:Item):Void {
@@ -228,6 +302,8 @@ class Events
 			} else if (pet.ferocity <= 50 && pet.spirit >= 50) {
 				log('She calls it a \"Satan bed\" and refuses to sleep on it. You\'re a demon, you remind her. Oh yeah, she says.');
 			}
+		} else if (item.name == "Heisenberg Hat") {
+			if (pet.ferocity >= 50) log('She tells you to say her name.') else log('She thinks it\'s pretty swankish.');
 		}
 	}
 
@@ -242,7 +318,7 @@ class Events
 			if (pet.stamina >= (pet.maxStamina - 10)) {
 				println('She\'s full.');
 			} else {
-				if (pet.level >= 10) {
+				if (pet.level >= 6) {
 					pet.stamina += 20;
 					var stamina20 = true;
 				} else {
@@ -277,7 +353,7 @@ class Events
 		} else if (item.name == "Atlas Shrugged Paperback") {
 			var bigLoss = false;
 			if (pet.spirit > 5) {
-				if (pet.level >= 5 && pet.level <= 20) {
+				if (pet.level >= 3 && pet.level <= 8) {
 					pet.spirit -= 5;
 					pet.ferocity += 5;
 					bigLoss = true;
@@ -305,10 +381,15 @@ class Events
 				println('${pet.name} couldn\'t bring herself to read it. She\'s just too nihilistic.');
 			}
 		} else if (item.name == "Meth") {
-			if (pet.maxStamina > 60 && pet.stamina < (pet.maxStamina - 10)) {
+			var hasHat:Bool = false;
+			for (item in pet.items)
+				if (item.name == "Heisenberg Hat")
+					hasHat = true;
+
+			if ((pet.maxStamina > 60 && pet.stamina < (pet.maxStamina - 10)) || hasHat) {
 				pet.stamina += 60;
-				pet.maxStamina -= 10;
-				pet.trust -=15;
+				if (!hasHat) pet.maxStamina -= 10;
+				if (!hasHat) pet.trust -=15;
 				if (pet.trust <= 50 && pet.rhythm >= 50) {
 					println('She gets really paranoid and uncomfortable around you. You catch her dancing in the other room.');
 				} else if (pet.trust <= 50 && pet.rhythm <= 50) {
@@ -324,7 +405,7 @@ class Events
 			}
 		} else if (item.name == "Bubblebath") {
 			var trustBoost = false;
-			if (pet.level <= 15 && pet.trust <= 90) {
+			if (pet.level <= 7 && pet.trust <= 90) {
 				pet.trust += 10;
 				trustBoost = true;
 			}

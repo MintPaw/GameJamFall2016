@@ -26,7 +26,7 @@ class Statics
 	}
 
 	public static function log(str:String):Void {
-		Game.data.log.push(str);
+		Game.data.log.push("Day "+Game.data.day+" "+getTimeString()+" - "+str);
 	}
 
 	public static function getChar(echo:Bool=true):String {
@@ -96,4 +96,39 @@ class Statics
     while (result == null || exclude.indexOf(result) != -1) result = array[Math.floor(Math.random()*array.length)];
     return result;
   }
+
+		public static function clamp(num:Float, min:Float, max:Float):Float {
+			return Math.min(Math.max(min, num), max);
+		}
+
+		public static function sleep(time:Int):Void {
+			Sys.sleep(time/1000);
+		}
+
+		public static function getTimeString():String {
+			var hr:Int = Game.data.hour % 24;
+			var hrStr:String;
+
+			var min:Int = Math.round(Game.data.seconds/10*60);
+			var minStr:String = Std.string(min);
+
+			var ampm:String = "";
+
+			if (hr <= 12) {
+				hrStr = Std.string(hr);
+				ampm = "am";
+			} else {
+				hrStr = Std.string(hr-12);
+				ampm = "pm";
+			}
+
+			if (minStr.length < 2) minStr = "0"+minStr;
+			if (hrStr.length < 2) hrStr = "0"+hrStr;
+
+			var timeStr:String = "";
+			timeStr = hrStr+":"+minStr+ampm;
+
+			return timeStr;
+		}
+
 }

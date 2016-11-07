@@ -15,16 +15,15 @@ class Shop
 		newEquippableProduct("Washable Inverted Cross Tattoo", ["Moon Chunk" => 20, "Moon Gem" => 10, "Soap" => 10]);
 		newEquippableProduct("Nightlight", ["Moon Chunk" => 50, "Moon Gem" => 50, "Glowstick" => 20]);
 		newEquippableProduct("Comfy Little Bed of Spikes", ["Moon Chunk" => 300]);
-		newEquippableProduct("Heavenly Bed", ["Moon Chunk" => 600]);
-		newEquippableProduct(
-				"The Devil's Own Crusty Mattress", ["Moon Chunk" => 100, "Moon Gem" => 40, "Washable Inverted Cross Tattoo" => 3]);
+		// newEquippableProduct("Heavenly Bed", ["Moon Chunk" => 600]);
+		// newEquippableProduct("The Devil's Own Crusty Mattress", ["Moon Chunk" => 200, "Moon Gem" => 40]);
 
-		newEquippableProduct("Studded Glowchoker", ["Moon Gem" => 80, "Glowstick" => 30]);
-		newEquippableProduct("Steamy Shower", ["Moon Chunk" => 200, "Soap" => 10, "Air Duster" => 30]);
-		newEquippableProduct("Necronomargaritaville", ["Moon Chunk" => 350, "Moon Gem" => 100, "Wine" => 50, "Demon Treatz" => 10]);
+		// newEquippableProduct("Studded Glowchoker", ["Moon Gem" => 80, "Glowstick" => 30]);
+		// newEquippableProduct("Steamy Shower", ["Moon Chunk" => 200, "Soap" => 10, "Air Duster" => 30]);
+		// newEquippableProduct("Necronomargaritaville", ["Moon Chunk" => 350, "Moon Gem" => 100, "Wine" => 50, "Demon Treatz" => 10]);
 		newEquippableProduct("Heisenberg Hat", ["Meth" => 100]);
-		newEquippableProduct("Cuter Hat", ["Moon Chunk" => 200, "Moon Gem" => 200]);
-		newEquippableProduct("Multiplicatizer Choker", ["Moon Chunk" => 750, "Studded Glowchoker" => 3]);
+		// newEquippableProduct("Cuter Hat", ["Moon Chunk" => 200, "Moon Gem" => 200]);
+		// newEquippableProduct("Multiplicatizer Choker", ["Moon Chunk" => 750, "Studded Glowchoker" => 3]);
 	}
 
 	public static function drawShop():Void {
@@ -54,10 +53,10 @@ class Shop
 
 		for (prod in Game.data.products) {
 			var s:String = prod.name;
-			s += "\t";
-			if (affordable.indexOf(prod.name) == -1) s += "(TOO EXPENSIVE)\t";
+			while (s.length < longestItemName) s += " ";
+			if (affordable.indexOf(prod.name) == -1) s += "(TOO EXPENSIVE)";
 			for (key in prod.price.keys())
-				s += '(${key}: ${prod.price.get(key)})\t';
+				s += '(${key}: ${prod.price.get(key)})';
 			shopChoices.push(s);
 		}
 
@@ -70,7 +69,7 @@ class Shop
 		if (unAffordable.indexOf(productResult.name) != -1) {
 			println("This item is too expensive");
 		} else {
-			println("You brought a "+productResult.name);
+			println("You bought a "+productResult.name);
 
 			for (key in productResult.price.keys()) {
 				var amount:Int = productResult.price.get(key);

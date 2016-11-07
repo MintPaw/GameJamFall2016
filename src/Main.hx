@@ -15,7 +15,6 @@ class Game
 		// Entry point
 		clear();
 		println("GAME START");
-		Sys.stdin().readByte();
 		init();
 		data = newGameData();
 		initJobs();
@@ -24,14 +23,15 @@ class Game
 
 		genPet();
 
-		// for (i in 0...20) obtainConsumable("Moon Gem");
-		// for (i in 0...20) obtainConsumable("Soap");
-		// obtainConsumable("Energy giver");
-		// obtainConsumable("Demon Treatz");
-		// obtainConsumable("Atlas Shrugged Paperback");
-		// obtainConsumable("Bubblebath");
-		// obtainConsumable("Meth");
-		// obtainEquipment("Spirit Increaser");
+		// for (prod in data.products) {
+		// 	if (prod.consumable)
+		// 		obtainConsumable(prod.name);
+		// 	else if (prod.equippable)
+		// 		obtainEquipment(prod.name);
+		// 	else
+		// 		obtainItem(prod.name);
+		// }
+
 		while (true) {
 			clear();
 			update();
@@ -57,6 +57,15 @@ class Game
 		data.hour -= Std.int(daysPassed*hoursInDay);
 		data.day += daysPassed;
 
+		for (p in data.pets) {
+			p.stamina = Std.int(clamp(p.stamina, 0, p.maxStamina));
+			p.trust = Std.int(clamp(p.trust, 0, 100));
+			p.sensitivity = Std.int(clamp(p.sensitivity, 0, 100));
+			p.ferocity = Std.int(clamp(p.ferocity, 0, 100));
+			p.spirit = Std.int(clamp(p.spirit, 0, 100));
+			p.rhythm = Std.int(clamp(p.rhythm, 0, 100));
+		}
+
 		for (i in 0...hoursPassed)
 			hourTick();
 
@@ -80,27 +89,21 @@ class Game
 	}
 
 	public function dayTick():Void {
-		if (data.day % 5 == 0 && data.pets.length <= 5) genPet();
+		if (data.day > 2*data.pets.length && data.pets.length < 30) genPet();
 		for (p in data.pets)
-			equipmentTicks(p);
+			dayTicks(p);
 	}
 
 	public function drawMainMenu():Void {
-		var time:Int = data.hour % 24;
-		var timeStr:String = "";
-		if (time <= 12) timeStr = time+":00 am";
-		else timeStr = (time-12)+":00 pm";
+		var time:Int = Game.data.hour % 24;
+		var min:Int = Math.round(Game.data.seconds/10*60);
+		var minStr:String = Std.string(min);
 
-		println('Day ${data.day} $timeStr');
-		println("Realtime seconds: "+data.seconds+"sec.");
-		println("Log:");
-		for (i in data.log.length-10...data.log.length)
-			if (data.log[i] != null)
-				println(data.log[i]);
+		drawLog();
 
 		var result:String = menu(
 				"Main menu",
-				["Pets", "Shop", "Jobs", "Refresh", "Simulate 10 real seconds", "Simulate 1 real hour" ,"Quit"]
+				["Pets", "Shop", "Inventory", "Jobs", "Refresh", "Simulate time passing" ,"Quit"]
 				);
 
 		if (result == "Pets") {
@@ -112,16 +115,63 @@ class Game
 			pause();
 		} else if (result == "Shop") {
 			drawShop();
-		} else if (result == "Simulate 10 real seconds") {
-			lastTime -= 10;
-		} else if (result == "Simulate 1 real hour") {
-			lastTime -= 60*60;
+		} else if (result == "Simulate time passing") {
+			drawTimeMenu();
+		} else if (result == "Inventory") {
+			clear();
+			drawInvetory();
+			pause();
 		} else if (result == "Quit") {
 			exit();
 		}
 	}
 
+	public function drawLog():Void {
+		println("=========================================================");
+		println("Log:");
+		for (i in data.log.length-10...data.log.length)
+			if (data.log[i] != null)
+				println(data.log[i]);
+		println("=========================================================");
+		println('Day ${data.day} ${getTimeString()}');
+		print("\n");
+	}
+
+	public function drawTimeMenu():Void {
+		clear();
+		println("How many in-game hours would you like to pass: ");
+		var result:Float = Std.parseFloat(getString());
+
+		for (i in 0...10) {
+			clear();
+			lastTime -= result;
+			update();
+			drawLog();
+			drawInvetory();
+			sleep(500);
+		}
+	}
+
+	public function drawInvetory():Void {
+		var items:Array<String> = [];
+		for (it in data.items)
+			items.push(it.name);
+
+		for (i in 0...items.length)
+			items[i] += "  x" + itemCountByName(items[i]);
+
+		var realItems:Array<String> = [];
+		for (it in items)
+			if (realItems.indexOf(it) == -1)
+				realItems.push(it);
+
+		for (line in realItems)
+			println(line);
+	}
+
 	public function drawJobTable():Void {
+		clear();
+
 		var nameLen:Int = 0;
 		for (j in data.jobs)
 			nameLen = Std.int(Math.max(j.name.length, nameLen));
@@ -291,14 +341,19 @@ class Game
 					equipmentChoices.push(it.name);
 
 		for (i in 0...equipmentChoices.length) {
-			equipmentChoices[i] += "| x" + itemCountByName(equipmentChoices[i]);
+			equipmentChoices[i] += "  x" + itemCountByName(equipmentChoices[i]);
 		}
 
+		var realEquipmentChoices:Array<String> = [];
+		for (it in equipmentChoices)
+			if (realEquipmentChoices.indexOf(it) == -1)
+				realEquipmentChoices.push(it);
+
 		equipmentChoices.push("Back");
-		var result:String = menu("Choose equipment", equipmentChoices);
+		var result:String = menu("Choose equipment", realEquipmentChoices);
 		if (result == "Back") return;
 
-		result = result.substring(0, result.indexOf("|"));
+		result = result.substring(0, result.indexOf("  "));
 		println("Chose " + result);
 
 		update();
@@ -347,8 +402,24 @@ class Game
 	}
 
 	public function newPet():Pet {
+		var petNames:Array<String> = [
+			"Velma",
+			"Gorg",
+			"Forkstench",
+			"Big Jane Johnson",
+			"Spanglehope",
+			"Thronsteer, Seer of Gordongo",
+			"Slambo",
+			"Wingus",
+			"Floatilla, Float-Demon",
+			"Ebony Darkness Dementia Raven Way",
+			"Aragorn",
+			"Farstenstile"
+		];
+		for (i in 0...data.pets.length) petNames.push("newPet #"+i);
+
 		var pet:Pet = {
-			name: "pet"+data.pets.length,
+			name: petNames[data.pets.length],
 			job: "None",
 			items: [],
 			exp: 0,

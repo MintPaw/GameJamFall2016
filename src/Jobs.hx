@@ -14,7 +14,7 @@ class Jobs {
 		newJob("Banker", 9, 15);
 
 		newJob("Sleep", 0, 24);
-		newJob("Test job", 0, 24);
+		// newJob("Test job", 0, 24);
 	}
 
 	public static function newJob(
@@ -33,6 +33,7 @@ class Jobs {
 
 	public static function isJobReady(name:String):Bool {
 		var job:Job = jobByName(name);
+		if (job == null) return false;
 		var ready:Bool =
 			Game.data.hour >= job.start &&
 			Game.data.hour < job.end;
