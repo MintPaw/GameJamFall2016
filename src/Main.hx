@@ -83,7 +83,7 @@ class Game
 			if (p.exp > Math.pow(2, p.level)) {
 				p.exp = 0;
 				p.level++;
-				log('"${p.name}" gained a level.');
+				log('${p.name} gained a level.');
 			}
 		}
 	}
@@ -139,7 +139,7 @@ class Game
 
 	public function drawTimeMenu():Void {
 		clear();
-		println("How many in-game hours would you like to pass: ");
+		println("You decide to piddle around for this many hours: ");
 		var result:Float = Std.parseFloat(getString());
 
 		for (i in 0...10) {
@@ -257,21 +257,21 @@ class Game
 		println("");
 
 		var petOptions:Array<String> = [];
-		petOptions.push("Give consumable");
-		petOptions.push("Change equipment");
-		petOptions.push("Change name");
-		if (pet.job == "None") petOptions.push("Send to job") else petOptions.push("Come home");
+		petOptions.push("Give consumable.");
+		petOptions.push("Change equipment.");
+		petOptions.push("Change name.");
+		if (pet.job == "None") petOptions.push("Send to work.") else petOptions.push("Bring home.");
 		petOptions.push("Back");
 
 		var result:String = menu("Pet", petOptions);
 
-		if (result == "Give consumable") drawPetConsumableMenu(pet);
-		if (result == "Change equipment") drawPetEquipmentMenu(pet);
-		if (result == "Change name") drawPetNameMenu(pet);
-		if (result == "Send to job") drawPetJobMenu(pet);
-		if (result == "Come home") {
+		if (result == "Give consumable.") drawPetConsumableMenu(pet);
+		if (result == "Change equipment.") drawPetEquipmentMenu(pet);
+		if (result == "Change name.") drawPetNameMenu(pet);
+		if (result == "Send to work.") drawPetJobMenu(pet);
+		if (result == "Bring home.") {
 			pet.job = "None";
-			println("Pet came home.");
+			println("She came home.");
 			pause();
 		}
 	}
@@ -289,10 +289,10 @@ class Game
 		if (result != "Back") {
 			if (isJobReady(result)) {
 				pet.job = result;
-				println("Pet went to job.");
+				println("She went off and started her workday.");
 				pause();
 			} else {
-				println("Job not currently available.");
+				println("That job isn\'t available.");
 				pause();
 			}
 		}
@@ -309,7 +309,7 @@ class Game
 
 		slotChoices.push("Back");
 		var result:String = menu("Equipment action", slotChoices);
-		if (result == "Back") return;
+		if (result == "Back.") return;
 
 		var slot:Int = slotChoices.indexOf(result);
 		var toRemove:Bool = result.indexOf("Remove") != -1;
@@ -327,9 +327,9 @@ class Game
 
 	public function drawPetNameMenu(pet:Pet):Void {
 		clear();
-		print('Change ${pet.name}\'s name to: ');
+		print('You stroke your chin. Yes, a better name for ${pet.name} would be: ');
 		pet.name = getString();
-		println('Pet has been renamed to ${pet.name}');
+		println('Yes, much better. From now on she shall be known as ${pet.name}.');
 		pause();
 	}
 
@@ -349,7 +349,7 @@ class Game
 			if (realEquipmentChoices.indexOf(it) == -1)
 				realEquipmentChoices.push(it);
 
-		equipmentChoices.push("Back");
+		realEquipmentChoices.push("Back");
 		var result:String = menu("Choose equipment", realEquipmentChoices);
 		if (result == "Back") return;
 
@@ -408,7 +408,7 @@ class Game
 			"Forkstench",
 			"Big Jane Johnson",
 			"Spanglehope",
-			"Thronsteer, Seer of Gordongo",
+			"Thronsteer, Seer of Gordongus",
 			"Slambo",
 			"Wingus",
 			"Floatilla, Float-Demon",

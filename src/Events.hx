@@ -201,7 +201,7 @@ class Events
 		}
 
 		if (!isJobReady(pet.job)) {
-			if (pet.job != "Sleep") log('${pet.name}\'s shift ended');
+			if (pet.job != "Sleep") log('${pet.name}\'s shift ended.');
 			pet.job = "None";
 		}
 
@@ -212,7 +212,7 @@ class Events
 		pet.exp += 1;
 		if (pet.stamina <= 0) {
 			pet.job = "Sleep";
-			log('${pet.name} waited up for you, but couldn\'t quite make it.');
+			log('${pet.name} finally flops into bed and slumbers.');
 		}
 	}
 
@@ -247,7 +247,7 @@ class Events
 				win = false;
 
 		if (win)
-			log("You win!");
+			log("You win!!!!!!!!!!!!!!!!!!!!! Demonic jaws close around an empty space in the air and rip the time from it, causing a sort of time-based black hole to form and slurp up all the time in the universe. Good job.");
 
 	}
 
@@ -308,7 +308,7 @@ class Events
 	}
 
 	public static function equipmentRemoved(pet:Pet, item:Item):Void {
-		log('Equipment "${item.name}" was removed from pet "${pet.name}"');
+		log('You took the ${item.name} away from ${pet.name}.');
 	}
 
 	public static function consumableUsed(pet:Pet, item:Item):Void {
@@ -404,11 +404,7 @@ class Events
 				println('She turns it down. She\'s trying to turn her life around, she says.');
 			}
 		} else if (item.name == "Bubblebath") {
-			var trustBoost = false;
-			if (pet.level <= 7 && pet.trust <= 90) {
-				pet.trust += 10;
-				trustBoost = true;
-			}
+			pet.trust += 10;
 			pet.stamina += 30;
 			pet.ferocity -= 5;
 			if (pet.ferocity <= 50 && pet.sensitivity <= 50) {
@@ -420,7 +416,7 @@ class Events
 			} else if (pet.ferocity >= 50 && pet.sensitivity >= 50) {
 				println('She pretends like she\'s too ferocious for a bubblebath, but you can tell she\'s having a great time.');
 			}
-			if (trustBoost) log('Gained 30 stamina, lost 5 ferocity, and gained 10 trust.') else log('Gained 30 stamina and lost 5 ferocity.');
+			log('Gained 30 stamina, lost 5 ferocity, and gained 10 trust.');
 		} else if (item.name == "Glowforce Supersonic Energy Beverage") {
 			if (pet.stamina < pet.maxStamina) {
 				pet.maxStamina += 5;
@@ -459,6 +455,18 @@ class Events
 	}
 
 	public static function foundPet(pet:Pet):Void {
-		log('A new pet was found');
+		if (Game.data.pets.length == 1) {
+			log('While out on a moonwalk you hear distressed animal whining from the shadow of a crater. It\'s a little moon-demon, her leg snapped by some careless colonist\'s moon-bear trap.\n\nYou clean her wound and put a dora bandaid on it, and then you give dora little horns so she can relate better. She struggles and tries to get away from you.\n\nYou curl up into the fetal position with her and vow to raise her until she\'s strong enough to devour time itself, in order to prevent more careless dickery on behalf of moon-humanity. Should happen around level 10, you think.');
+		} else if (Game.data.pets.length == 2) {
+			log('You find another demon cowering under a freeway. A couple kids are pelting her with rocks. You make up a name for her on the spot and scream at them to LEAVE MY LITTLE GORG ALONE.');
+		} else if (Game.data.pets.length == 3) {
+			log('You bust into an italian restaurant just in time to witness a demon dishwasher getting yelled at by her boss. You punch him in the face and name her Forkstench because she happened to be holding a fork and very unwashed.');
+		} else if (Game.data.pets.length == 4) {
+			log('A particularly muscular demon woman renounces a life of moon-slavery and throws herself upon your doorstep. Her name is Big Jane Johnson.');
+		} else if (Game.data.pets.length == 5) {
+			log('You rescue a demon from a squad of cops and bring them back from the brink of death. Their name was Spangle, but they add hope at the end because that\'s what you give them.');
+		} else if (Game.data.pets.length == 6) {
+			log('THRONSTEER, SEER OF GORDONGUS shows up, probably the least injured demon you\'ve ever met. They\'ve heard of your demon sanctuary here and your plan to obliterate time. They want to help so they don\'t have to worry about paying rent in a couple days.');
+		}
 	}
 }
